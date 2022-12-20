@@ -20,7 +20,7 @@
 //Since key_press() can recieve only one argument, all the argument shold be gathered in one structure
 //x,y and str are meaningless variables.
 typedef struct s_param{
-	int		x;
+    int		x;
 	int		y;
 	char	str[3];
 }				t_param;
