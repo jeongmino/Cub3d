@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   color.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeoan <jeoan@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: junoh <junoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/20 15:47:45 by jeoan             #+#    #+#             */
-/*   Updated: 2021/11/21 16:36:01 by jeoan            ###   ########.fr       */
+/*   Created: 2023/01/17 14:27:08 by junoh             #+#    #+#             */
+/*   Updated: 2023/01/17 14:27:09 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "cub3d.h"
 
-void	ft_bzero(void *s, size_t n)
+int	get_color(t_rgb rgb)
 {
-	ft_memset(s, 0, n);
+	return (rgb.red * 0x10000 + rgb.green * 0x100 + rgb.blue);
 }

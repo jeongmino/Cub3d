@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "map.h"
+#include "cub3d.h"
 
 static int	is_valid_file_extension(char *filename)
 {
@@ -27,17 +27,17 @@ static int	is_valid_file_extension(char *filename)
 	}
 }
 
-int	open_cub_file(char *filename)
+int	open_cub_file(t_cub *data, char *filename)
 {
 	int	fd;
 
 	if (!is_valid_file_extension(filename))
-		catch_error(MSG_USAGE);
+		catch_error(data, MSG_USAGE);
 	else
 	{
 		fd = open(filename, O_RDONLY);
 		if (fd == -1)
-			catch_error(strerror(errno));
+			catch_error(data, strerror(errno));
 		return (fd);
 	}
 	return (-1);

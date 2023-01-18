@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "map.h"
+#include "cub3d.h"
 
 static int	is_player_or_space(int n)
 {
@@ -82,10 +82,10 @@ static int	is_unique_player(t_map *map_data)
 	return (1);
 }
 
-void	check_map_valid(t_map *map_data)
+void	check_map_valid(t_cub *data)
 {
-	if (!is_map_closed(map_data))
-		catch_error(MSG_MAP_OPENED);
-	if (!is_unique_player(map_data))
-		catch_error(MSG_PLAYER_DUP);
+	if (!is_map_closed(&data->map))
+		catch_error(data, MSG_MAP_OPENED);
+	if (!is_unique_player(&data->map))
+		catch_error(data, MSG_PLAYER_DUP);
 }

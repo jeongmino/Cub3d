@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_color.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeoan <jeoan@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: junoh <junoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 13:43:16 by jeoan             #+#    #+#             */
-/*   Updated: 2023/01/09 16:27:23 by junoh            ###   ########.fr       */
+/*   Updated: 2023/01/18 12:44:28 by junoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static int	check_range(int n)
 	return (n >= 0 && n <= 255);
 }
 
-static int	get_number(char *str)
+static int	get_number(t_cub *data, char *str)
 {
 	int	n;
 
@@ -44,26 +44,26 @@ static int	get_number(char *str)
 		str++;
 	n = ft_atoi(str);
 	if (!check_range(n))
-		catch_error("Argument range error");
+		catch_error(data, MSG_BAD_SCENE);
 	while (*str)
 	{
 		if (!ft_isdigit(*str))
-			catch_error("Argument error");
+			catch_error(data, MSG_BAD_SCENE);
 		str++;
 	}
 	return (n);
 }
 
-void	set_color(char *colorset, t_rgb *rgb, int *flag)
+void	set_color(t_cub *data, char *colorset, t_rgb *rgb, int *flag)
 {
 	char	**split;
 
 	if (!colorset || ft_count_field(colorset, ',') != 3)
-		catch_error("Argument Error");
+		catch_error(data, MSG_BAD_SCENE);
 	split = ft_split(colorset, ',');
-	rgb->red = get_number(split[0]);
-	rgb->green = get_number(split[1]);
-	rgb->blue = get_number(split[2]);
+	rgb->red = get_number(data, split[0]);
+	rgb->green = get_number(data, split[1]);
+	rgb->blue = get_number(data, split[2]);
 	free_split(split);
 	*flag = 1;
 }
